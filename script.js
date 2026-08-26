@@ -387,48 +387,48 @@ function createBookWindow(book) {
 
     <div class="admin-editor">
 
-        <hr>
+    <hr>
 
-        <h3>Tags</h3>
+    <h3>Tags</h3>
 
-        <div class="tag-inputs">
+    <div class="tag-inputs">
 
-            <input
-                class="admin-tag"
-                data-tag="tag 1"
-                value="${escapeHTML(book["tag 1"] || "")}"
-                placeholder="Tag 1"
-            >
+        <input
+            class="admin-tag"
+            data-tag="tag1"
+            value="${escapeHTML(book.tag1 || "")}"
+            placeholder="Tag 1"
+        >
 
-            <input
-                class="admin-tag"
-                data-tag="tag 2"
-                value="${escapeHTML(book["tag 2"] || "")}"
-                placeholder="Tag 2"
-            >
+        <input
+            class="admin-tag"
+            data-tag="tag2"
+            value="${escapeHTML(book.tag2 || "")}"
+            placeholder="Tag 2"
+        >
 
-            <input
-                class="admin-tag"
-                data-tag="tag 3"
-                value="${escapeHTML(book["tag 3"] || "")}"
-                placeholder="Tag 3"
-            >
+        <input
+            class="admin-tag"
+            data-tag="tag3"
+            value="${escapeHTML(book.tag3 || "")}"
+            placeholder="Tag 3"
+        >
 
-            <input
-                class="admin-tag"
-                data-tag="tag 4"
-                value="${escapeHTML(book["tag 4"] || "")}"
-                placeholder="Tag 4"
-            >
+        <input
+            class="admin-tag"
+            data-tag="tag4"
+            value="${escapeHTML(book.tag4 || "")}"
+            placeholder="Tag 4"
+        >
 
-            <input
-                class="admin-tag"
-                data-tag="tag 5"
-                value="${escapeHTML(book["tag 5"] || "")}"
-                placeholder="Tag 5"
-            >
+        <input
+            class="admin-tag"
+            data-tag="tag5"
+            value="${escapeHTML(book.tag5 || "")}"
+            placeholder="Tag 5"
+        >
 
-        </div>
+    </div>
 
 
         <h3>Rating</h3>
@@ -542,17 +542,20 @@ saveButton.addEventListener(
 
         if (error) {
 
-            console.error(
-                "Admin update failed:",
-                error
-            );
+    console.error(
+        "Admin update failed:",
+        error.message,
+        error.details,
+        error.hint,
+        error.code
+    );
 
-            alert(
-                "Could not save changes ❌"
-            );
+    alert(
+        "Could not save changes ❌"
+    );
 
-            return;
-        }
+    return;
+}
 
 
         console.log(
