@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cháy Go</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <!-- =========================
+         LIBRARY PAGE
+         ========================= -->
+
+    <div id="library-page">
+
+        <header>
+
+            <h1>Cháy Go</h1>
+
+            <nav>
+                <button id="home-button">Home</button>
+
+                <button id="yaoi-button">
+                    ボーイズラブ
+                </button>
+
+                <button id="danmei-button">
+                    耽美
+                </button>
+
+                <button id="random-button">
+                    Random
+                <button id="admin-button">Admin</button>
+                </button>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search title..."
+                >
+            </nav>
+
+        </header>
+
+
+        <main>
+
+            <section id="books-container">
+                <!-- Books appear here -->
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         RANDOM PAGE
+         ========================= -->
+
+    <div id="random-page">
+
+        <!-- Only navigation on random page -->
+
+        <button id="random-home-button">
+            Home
+        </button>
+
+
+        <!-- Random result appears here -->
+
+        <div id="random-result">
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         BOOK WINDOWS
+         ========================= -->
+
+    <div id="windows-container">
+        <!-- Persistent book windows are created here -->
+    </div>
+
+
+    <!-- =========================
+         RANDOM CLOSE WARNING
+         ========================= -->
+
+    <div id="random-close-warning">
+
+        <div id="random-close-box">
+
+            <div id="random-close-title">
+                WHAT NOW?
+            </div>
+
+
+            <div id="random-close-buttons">
+
+                <button id="random-again-choice">
+                    RANDOM AGAIN
+                </button>
+
+
+                <button id="random-home-choice">
+                    BACK HOME
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         WINDOW LIMIT WARNING
+         ========================= -->
+
+    <div id="limit-warning">
+
+        <div id="limit-warning-box">
+
+            <div id="limit-warning-title">
+                TOO MANY BOOKS OPEN
+            </div>
+
+
+            <div id="limit-warning-text">
+                GIRL. YOU HAVE ENOUGH TABS.
+            </div>
+
+
+            <button id="limit-warning-close">
+                OK I'LL BE NORMAL
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

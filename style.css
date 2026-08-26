@@ -1,0 +1,598 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px;
+
+    font-family: Arial, sans-serif;
+
+    background: #f5f1e8;
+    color: #222;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+}
+
+h1 {
+    margin: 0 0 20px;
+}
+
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button,
+input {
+    font: inherit;
+    padding: 10px 14px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#search {
+    min-width: 220px;
+}
+
+
+/* =========================
+   LIBRARY
+   ========================= */
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#books-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.book-row {
+    padding: 16px;
+
+    background: white;
+    border: 1px solid #ddd;
+
+    cursor: pointer;
+}
+
+.book-row:hover {
+    background: #eee;
+}
+
+
+/* =========================
+   PERSISTENT BOOK WINDOWS
+   ========================= */
+
+.book-window {
+    position: fixed;
+
+    width: min(700px, 80vw);
+    max-height: 80vh;
+
+    background: white;
+    border: 1px solid #222;
+
+    overflow: hidden;
+
+    z-index: 100;
+}
+
+
+/* =========================
+   ACTIVE WINDOW
+   ========================= */
+
+.book-window.active {
+    display: block;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/* =========================
+   MINIMIZED WINDOW
+   ========================= */
+
+.book-window.minimized {
+    position: fixed;
+
+    left: auto;
+    top: auto;
+
+    transform: none;
+
+    width: 360px;
+    max-width: 360px;
+
+    max-height: none;
+
+    background: transparent;
+    border: none;
+
+    overflow: visible;
+
+    z-index: 90;
+}
+
+.book-window.minimized .book-window-content {
+    display: none;
+}
+
+
+/* =========================
+   WINDOW HEADER
+   ========================= */
+
+.book-window-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 32px;
+
+    padding: 6px 9px;
+
+    background: white;
+
+    border-bottom: 1px solid #222;
+
+    cursor: pointer;
+}
+
+
+/* Minimized header */
+
+.book-window.minimized .book-window-header {
+    min-height: 0;
+
+    padding: 6px 8px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(0, 0, 0, 0.15);
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.book-window.minimized .book-window-header:hover {
+    transform: translateX(-3px);
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================
+   WINDOW TITLE
+   ========================= */
+
+.book-window-title {
+    font-weight: bold;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.book-window.minimized .book-window-title {
+    max-width: 320px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   WINDOW CONTROLS
+   ========================= */
+
+.window-controls {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+.window-controls button {
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 18px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/*
+   Active window:
+   both − and × are visible.
+*/
+
+
+/*
+   Minimized window:
+   ONLY × is visible.
+*/
+
+.book-window.minimized .minimize-button {
+    display: none;
+}
+
+.book-window.minimized .close-button {
+    display: block;
+}
+
+
+/* =========================
+   WINDOW CONTENT
+   ========================= */
+
+.book-window-content {
+    padding: 30px;
+
+    max-height: calc(80vh - 40px);
+
+    overflow-y: auto;
+}
+
+
+/* =========================
+   RANDOM PAGE
+   ========================= */
+
+#random-page {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: #f5f1e8;
+}
+
+#random-page.active {
+    display: block;
+}
+
+
+/* =========================
+   RANDOM HOME
+   ========================= */
+
+#random-home-button {
+    position: absolute;
+
+    top: 30px;
+    left: 30px;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   RANDOM RESULT
+   ========================= */
+
+#random-result {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(700px, 80vw);
+}
+
+
+/* =========================
+   RANDOM WINDOW
+   ========================= */
+
+.random-window {
+    position: relative;
+
+    background: white;
+
+    border: 1px solid #222;
+}
+
+
+/* Random window header */
+
+.random-window-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 12px;
+
+    border-bottom: 1px solid #222;
+}
+
+
+/* Random X */
+
+.random-close-button {
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 22px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* Random content */
+
+.random-window-content {
+    padding: 30px;
+}
+
+
+/* =========================
+   RANDOM CLOSE POPUP
+   ========================= */
+
+#random-close-warning {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 20000;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.15);
+}
+
+#random-close-warning.active {
+    display: flex;
+}
+
+#random-close-box {
+    width: min(420px, 85vw);
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #222;
+
+    text-align: center;
+}
+
+#random-close-title {
+    margin-bottom: 25px;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#random-close-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+#random-close-buttons button {
+    padding: 10px 15px;
+
+    border: 1px solid #222;
+
+    background: white;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   LIMIT WARNING
+   ========================= */
+
+#limit-warning {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 0, 0, 0.18);
+}
+
+#limit-warning.active {
+    display: flex;
+}
+
+#limit-warning-box {
+    width: min(700px, 90vw);
+
+    padding: 50px;
+
+    text-align: center;
+
+    background: #ff0000;
+    color: white;
+
+    border: 8px solid #000;
+}
+
+#limit-warning-title {
+    font-size: clamp(32px, 6vw, 72px);
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+#limit-warning-text {
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 900;
+
+    margin-bottom: 35px;
+}
+
+#limit-warning-close {
+    background: white;
+    color: #000;
+
+    border: 4px solid #000;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px;
+    }
+
+    .book-window {
+        width: 92vw;
+        max-height: 82vh;
+    }
+
+    .book-window.minimized {
+        max-width: 240px;
+    }
+
+    .book-window.minimized .book-window-title {
+        max-width: 190px;
+    }
+
+    .book-window-content {
+        padding: 20px;
+    }
+
+    #random-result {
+        width: 92vw;
+    }
+
+}
+/* =========================
+   SEARCH NOT FOUND
+   ========================= */
+
+#search-not-found {
+    position: fixed;
+    inset: 0;
+
+    z-index: 15000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+#search-not-found-box {
+    position: relative;
+
+    width: min(420px, 85vw);
+
+    padding: 45px 50px;
+
+    background: white;
+
+    border: 1px solid #222;
+
+    text-align: center;
+}
+
+
+#search-not-found-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+#search-not-found-close {
+    position: absolute;
+
+    top: 8px;
+    right: 10px;
+
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+.admin-editor {
+    display: none;
+}
+
+body.admin-mode .admin-editor {
+    display: block;
+}
