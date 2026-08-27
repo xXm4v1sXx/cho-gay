@@ -1,55 +1,279 @@
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("fonts/HelveticaNeue-01.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica Black";
+    src: url("fonts/HelveticaNeue-CondensedBlack-10.ttf");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("fonts/HelveticaNeue-Medium-11.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("fonts/HelveticaNeue-Bold-02.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("fonts/HelveticaNeue-Italic-03.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    padding: 40px;
+    padding: 0;
 
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", sans-serif;
 
     background: #f5f1e8;
-    color: #222;
+    color: #ff0000;
 }
 
+body,
+button,
+input,
+textarea {
+    color: #ff0000;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 
 /* =========================
-   HEADER
+   HERO / TITLE SCREEN
    ========================= */
 
 header {
-    max-width: 1000px;
-    margin: 0 auto 40px;
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background-image: url("images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+header {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.33),
+            rgba(0, 0, 0, 0.33)
+        ),
+        url("images/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* Giant title */
+
 h1 {
-    margin: 0 0 20px;
+    margin: 0;
+
+    transform: translateY(-6vh);
+
+    font-family: "Helvetica Neue", sans-serif;
+
+    font-size: clamp(110px, 19vw, 280px);
+    font-weight: 700;
+
+    line-height: 0.8;
+    letter-spacing: -0.07em;
+
+    white-space: nowrap;
 }
 
 
 /* =========================
-   NAVIGATION
+   HORIZONTAL NAVIGATION
    ========================= */
 
 nav {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: none;
+
+    display: block;
+
+    pointer-events: none;
+
+    z-index: 10;
 }
 
-button,
-input {
-    font: inherit;
-    padding: 10px 14px;
-}
+nav button {
+    position: absolute;
 
-button {
+    pointer-events: auto;
+
+    background: transparent;
+    border: none;
+
+    color: #ff0000;
+
+    font-family: "Helvetica", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+
     cursor: pointer;
 }
 
+#home-button {
+    top: 5%;
+    right: 15%;
+}
+
+#yaoi-button {
+    top: 10%;
+    left: 20%;
+}
+
+#danmei-button {
+    top: 65%;
+    right: 20%;
+}
+
+#random-button {
+    top: 25%;
+    left: 55%;
+}
+
+#admin-button {
+    bottom: 5%;
+    left: 50%;
+}
+
+#search-button {
+    bottom: 20%;
+    left: 30%;
+}
+
+nav {
+    text-transform: lowercase;
+}
+
+/* Navigation buttons */
+
+nav button {
+    padding: 10px 4px;
+
+    border: none;
+    border-radius: 0;
+
+    background: transparent;
+
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+
+    color: #ff0000;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        font-weight 0.15s ease;
+}
+
+nav button {
+    white-space: nowrap;
+}
+
+nav button:hover {
+    background: transparent;
+    color: #ff0000;
+
+    font-weight: 700;
+}
+
+nav button {
+    width: 110px;
+    text-align: center;
+}
+
+#home-button {
+    width: 50px;
+}
+
+/* Search */
+
+##search {
+    width: 90px;
+    margin-left: 0;
+    padding: 10px 4px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ff0000;
+
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+
+    text-align: center;
+
+    cursor: text;
+    white-space: nowrap;
+}
+
 #search {
-    min-width: 220px;
+    color: #ff0000;
+    border-color: #ff0000;
+}
+
+#search {
+    white-space: nowrap;
+} 
+
+#search::placeholder {
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+#search:focus {
+    background: #fff;
 }
 
 
@@ -58,29 +282,8 @@ button {
    ========================= */
 
 main {
-    max-width: 1000px;
-    margin: 0 auto;
+    display: none;
 }
-
-#books-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.book-row {
-    padding: 16px;
-
-    background: white;
-    border: 1px solid #ddd;
-
-    cursor: pointer;
-}
-
-.book-row:hover {
-    background: #eee;
-}
-
 
 /* =========================
    PERSISTENT BOOK WINDOWS
@@ -93,7 +296,7 @@ main {
     max-height: 80vh;
 
     background: white;
-    border: 1px solid #222;
+    border: 1px solid #000000;
 
     overflow: hidden;
 
@@ -161,7 +364,7 @@ main {
 
     background: white;
 
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #000000;
 
     cursor: pointer;
 }
@@ -335,7 +538,7 @@ main {
 
     background: white;
 
-    border: 1px solid #222;
+    border: 1px solid #000000;
 }
 
 
@@ -349,7 +552,7 @@ main {
 
     padding: 10px 12px;
 
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #000000;
 }
 
 
@@ -408,7 +611,7 @@ main {
 
     background: white;
 
-    border: 1px solid #222;
+    border: 1px solid #000000;
 
     text-align: center;
 }
@@ -431,7 +634,7 @@ main {
 #random-close-buttons button {
     padding: 10px 15px;
 
-    border: 1px solid #222;
+    border: 1px solid #000000;
 
     background: white;
 
@@ -557,7 +760,7 @@ main {
 
     background: white;
 
-    border: 1px solid #222;
+    border: 1px solid #000000;
 
     text-align: center;
 }
@@ -595,4 +798,294 @@ main {
 
 body.admin-mode .admin-editor {
     display: block;
+}
+/* =========================
+   ADMIN STAR RATING
+   ========================= */
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    margin: 8px 0 28px;
+}
+
+.star-rating .star {
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    font-size: 32px;
+    line-height: 38px;
+
+    cursor: pointer;
+
+    color: transparent;
+
+    position: relative;
+
+    transition: transform 0.12s ease;
+}
+
+.star-rating .star::before {
+    content: "★";
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #000000;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* Empty */
+
+.star-rating .star.empty::before {
+    content: "☆";
+
+    background: none;
+    color: #000000;
+
+    -webkit-background-clip: initial;
+    background-clip: initial;
+}
+
+
+/* Full */
+
+.star-rating .star.full::before {
+    content: "★";
+
+    background: none;
+    color: #000000;
+}
+
+
+/* Half */
+
+.star-rating .star.half::before {
+    content: "☆";
+
+    background: none;
+    color: #000000;
+
+    -webkit-background-clip: initial;
+    background-clip: initial;
+}
+
+.star-rating .star.half::after {
+    content: "★";
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        to right,
+        #000000 0%,
+        #000000 50%,
+        transparent 50%,
+        transparent 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* Hover */
+
+.star-rating .star:hover {
+    transform: scale(1.12);
+}
+/* =========================
+   ADMIN REVIEW
+   ========================= */
+
+.admin-review {
+    display: block;
+
+    width: 100%;
+    min-height: 180px;
+
+    margin: 10px 0 24px;
+
+    padding: 16px;
+
+    font: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+
+    resize: vertical;
+
+    border: 1px solid #bbb;
+    border-radius: 6px;
+
+    background: #fafafa;
+}
+
+.admin-review:focus {
+    outline: none;
+
+    border-color: #000000;
+
+    background: white;
+}
+#site-title .title-hover {
+    display: none;
+}
+
+#site-title:hover .title-normal {
+    display: none;
+}
+
+#site-title:hover .title-hover {
+    display: inline;
+}
+
+.hero-decoration {
+    position: absolute;
+
+    width: 700px;
+
+    right: -50px;
+    bottom: -250px;
+
+    pointer-events: none;
+
+    filter:
+        brightness(0)
+        saturate(100%)
+        invert(11%)
+        sepia(100%)
+        saturate(7000%)
+        hue-rotate(0deg)
+        brightness(100%)
+        contrast(100%);
+}
+
+.hero-decoration-2 {
+    position: absolute;
+
+    width: 500px;
+
+    right:-160px;
+    bottom: -50px;
+
+    pointer-events: none;
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(11%)
+    sepia(100%)
+    saturate(7000%)
+    hue-rotate(0deg)
+    brightness(100%)
+    contrast(100%);
+}
+
+.hero-decoration-3 {
+    position: absolute;
+
+    width: 500px;
+
+    left:-200px;
+    bottom: -90px;
+
+    pointer-events: none;
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(11%)
+    sepia(100%)
+    saturate(7000%)
+    hue-rotate(0deg)
+    brightness(100%)
+    contrast(100%);
+}
+
+.hero-decoration-4 {
+    position: absolute;
+
+    width: 500px;
+
+    left:-10px;
+    bottom: -90px;
+
+    pointer-events: none;
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(11%)
+    sepia(100%)
+    saturate(7000%)
+    hue-rotate(0deg)
+    brightness(100%)
+    contrast(100%);
+}
+
+.hero-decoration-5 {
+    position: absolute;
+
+    width: 600px;
+
+    left:100px;
+    bottom: -10px;
+
+    pointer-events: none;
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(11%)
+    sepia(100%)
+    saturate(7000%)
+    hue-rotate(0deg)
+    brightness(100%)
+    contrast(100%);
+}
+
+.hero-decoration-6 {
+    position: absolute;
+
+    width: 700px;
+
+    right:250px;
+    bottom: -10px;
+
+    pointer-events: none;
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(11%)
+    sepia(100%)
+    saturate(7000%)
+    hue-rotate(0deg)
+    brightness(100%)
+    contrast(100%);
+}
+
+.button-number,
+.button-label {
+    display: block;
+}
+nav button {
+    text-align: left;
 }

@@ -433,15 +433,13 @@ function createBookWindow(book) {
 
         <h3>Rating</h3>
 
-        <input
-            class="admin-rating"
-            type="number"
-            min="0"
-            max="5"
-            step="0.5"
-            value="${book.rating ?? ""}"
-            placeholder="0–5"
-        >
+<div class="star-rating" data-rating="${book.rating ?? 0}">
+    <button type="button" class="star" data-value="1">★</button>
+    <button type="button" class="star" data-value="2">★</button>
+    <button type="button" class="star" data-value="3">★</button>
+    <button type="button" class="star" data-value="4">★</button>
+    <button type="button" class="star" data-value="5">★</button>
+</div>
 
 
         <h3>Review</h3>
@@ -465,6 +463,82 @@ function createBookWindow(book) {
     windowsContainer.appendChild(
         windowElement
     );
+    // =========================
+// STAR RATING
+// =========================
+
+const starRating =
+    windowElement.querySelector(".star-rating");
+
+const stars =
+    windowElement.querySelectorAll(".star");
+
+let currentRating =
+    Number(book.rating) || 0;
+
+
+function updateStars(rating) {
+
+    stars.forEach(star => {
+
+        const value =
+            Number(star.dataset.value);
+
+        star.classList.remove(
+            "full",
+            "half",
+            "empty"
+        );
+
+        if (value <= rating) {
+
+            star.classList.add("full");
+
+        } else if (value - 0.5 === rating) {
+
+            star.classList.add("half");
+
+        } else {
+
+            star.classList.add("empty");
+        }
+    });
+
+    starRating.dataset.rating =
+        rating;
+}
+
+
+stars.forEach(star => {
+
+    star.addEventListener(
+        "click",
+        event => {
+
+            const value =
+                Number(event.currentTarget.dataset.value);
+
+            const rect =
+                event.currentTarget.getBoundingClientRect();
+
+            const clickX =
+                event.clientX - rect.left;
+
+            const half =
+                clickX < rect.width / 2;
+
+            currentRating =
+                half
+                    ? value - 0.5
+                    : value;
+
+            updateStars(currentRating);
+        }
+    );
+});
+
+
+updateStars(currentRating);
 
 
     const windowData = {
@@ -1503,3 +1577,6 @@ adminButton.addEventListener(
                 : "Admin";
     }
 );
+document.getElementById("search-button").addEventListener("click", () => {
+    window.location.href = "search.html";
+});
