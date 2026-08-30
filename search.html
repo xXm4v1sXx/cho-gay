@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search — Chó Gay</title>
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <div id="search-page">
+        <!-- Search decorations -->
+
+<img
+    src="images/search-deco-1.png"
+    class="search-decoration"
+    alt=""
+>
+
+<img
+    src="images/search-deco-2.png"
+    class="search-decoration-2"
+    alt=""
+>
+
+<img
+    src="images/search-deco-3.png"
+    class="search-decoration-3"
+    alt=""
+>
+
+<img
+    src="images/search-deco-4.png"
+    class="search-decoration-4"
+    alt=""
+>
+
+<img
+    src="images/search-deco-5.png"
+    class="search-decoration-5"
+    alt=""
+>
+
+<!-- Home -->
+        <button
+                id="search-home-button"
+                type="button"
+                aria-label="Home"
+            >
+                <span class="button-number">(0)</span>
+                <span class="button-label">detox</span>
+            </button>
+
+        <!-- Search -->
+        <div id="search-interface">
+
+            <input
+                type="text"
+                id="search-page-input"
+                autocomplete="off"
+            >
+
+        </div>
+
+        <!-- Results -->
+        <div id="search-results">
+        </div>
+
+    </div>
+
+    <script src="search.js"></script>
+
+</body>
+
+</html>
