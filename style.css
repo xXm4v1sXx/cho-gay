@@ -2184,10 +2184,13 @@ body.admin-mode .inline-save-button:hover {
     pointer-events: none;
 }
 
-.display-star {
-    display: inline-block;
 
+/* Base star */
+
+.display-star {
     position: relative;
+
+    display: inline-block;
 
     width: 32px;
     height: 32px;
@@ -2205,8 +2208,6 @@ body.admin-mode .inline-save-button:hover {
 
 .display-star.full {
     color: #ff0000;
-
-    -webkit-text-stroke: 1px #ff0000;
 }
 
 
@@ -2214,8 +2215,6 @@ body.admin-mode .inline-save-button:hover {
 
 .display-star.empty {
     color: transparent;
-
-    -webkit-text-stroke: 1px #ff0000;
 }
 
 
@@ -2223,43 +2222,48 @@ body.admin-mode .inline-save-button:hover {
 
 .display-star.half {
     color: transparent;
-
-    -webkit-text-stroke: 1px #ff0000;
 }
 
-.display-star.half::after {
+
+.display-star.half::before {
     content: "★";
 
     position: absolute;
 
-    left: 0;
     top: 0;
+    left: 0;
 
-    width: 50%;
+    width: 40%;
+
     height: 100%;
 
     overflow: hidden;
 
     color: #ff0000;
 
-    -webkit-text-stroke: 1px #ff0000;
+    -webkit-text-stroke: 0;
+
+    white-space: nowrap;
 }
 
-
 /* Admin mode */
+
 .admin-display-stars {
     pointer-events: none;
     cursor: default;
 }
+
 
 body.admin-mode .admin-display-stars {
     pointer-events: auto;
     cursor: pointer;
 }
 
+
 body.admin-mode .admin-display-stars .display-star {
     cursor: pointer;
 }
+
 
 body.admin-mode .admin-display-stars .display-star:hover {
     transform: scale(1.08);
