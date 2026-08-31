@@ -1810,6 +1810,25 @@ body.admin-mode .admin-editor {
 }
 
 /* =====================================================
+   SEARCH RESULTS CONTAINER
+   ===================================================== */
+
+#search-results {
+    position: absolute;
+
+    top: 38%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(800px, 70vw);
+
+    max-height: 50vh;
+
+    overflow-y: auto;
+}
+
+/* =====================================================
    SEARCH COMPACT RESULT
    ===================================================== */
 
